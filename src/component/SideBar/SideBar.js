@@ -3,16 +3,24 @@ import * as icons from "react-icons/bi";
 import "./SideBar.css";
 import { useState } from "react";
 import { Store } from "redux";
-import authSlice from "../../redux/Slice/authSlice";
+import authSlice, { REMOVE_ACTIVE_USER } from "../../redux/Slice/authSlice";
 import { useDispatch } from "react-redux";
+import { AdminAccess } from "../AdminAccess";
 
 export const SideBar = () => {
   // const getUser =()=>{
 
   // }
-  const [user,setUser] = useState("");
+  const [user, setUser] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+  const dispatch = useDispatch();
+
+  const logOut = () => {
+    dispatch(REMOVE_ACTIVE_USER());
+  };
+
   return (
     <div className="sidebar" style={{ width: isOpen ? "300px" : "50px" }}>
       <div className="top-section">
@@ -27,6 +35,30 @@ export const SideBar = () => {
         </div>
       </div>
       <ul className="nav-links">
+        <AdminAccess>
+          <li className="active">
+            <Link to="/car">
+              <span
+                className="icon"
+                style={{ paddingRight: isOpen ? "0px" : "25px" }}
+              >
+                <icons.BiCar />
+              </span>
+              <span className="title">จัดการรถ</span>
+            </Link>
+          </li>
+          <li className="active">
+            <Link to="/customer">
+              <span
+                className="icon"
+                style={{ paddingRight: isOpen ? "0px" : "25px" }}
+              >
+                <icons.BiUserPlus />
+              </span>
+              <span className="title">จัดการลูกค้า</span>
+            </Link>
+          </li>
+        </AdminAccess>
         <li className="active">
           <Link to="/searchCar">
             <span
@@ -38,29 +70,8 @@ export const SideBar = () => {
             <span className="title">ค้นหารถ</span>
           </Link>
         </li>
-        <li className="active">
-          <Link to="/car">
-            <span
-              className="icon"
-              style={{ paddingRight: isOpen ? "0px" : "25px" }}
-            >
-              <icons.BiCar />
-            </span>
-            <span className="title">จัดการรถ</span>
-          </Link>
-        </li>
-        <li className="active">
-          <Link to="/customer">
-            <span
-              className="icon"
-              style={{ paddingRight: isOpen ? "0px" : "25px" }}
-            >
-              <icons.BiUserPlus />
-            </span>
-            <span className="title">จัดการลูกค้า</span>
-          </Link>
-        </li>
-        <li className="active">
+
+        <li className="active" onClick={logOut}>
           <Link to="/login">
             <span
               className="icon"
