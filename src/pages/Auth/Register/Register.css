@@ -1,0 +1,35 @@
+.auth-form-container,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-form-container,
+.register-form label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+.auth-form-container,
+.register-form input {
+  padding: 1rem;
+  border: black;
+  border-style: groove;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+}
+
+.auth-form-container,
+.register-form button {
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.link-btn {
+  background: none;
+  color: blue;
+  text-decoration: underline;
+}
