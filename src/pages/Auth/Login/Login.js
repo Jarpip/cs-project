@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { auth } from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { injectStyle } from "react-toastify/dist/inject-style";
 import { useDispatch } from "react-redux";
 import { SET_ACTIVE_USER } from "../../../redux/Slice/authSlice";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { TailSpin } from "react-loader-spinner";
 
 const Login = () => {
   injectStyle();
+
+  const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,24 +22,35 @@ const Login = () => {
   const toRegis = () => nav("/register");
 
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         const user = userCredential.user;
+        const q = query(
+          collection(db, "users"),
+          where("email", "==", user.email)
+        );
+        const querySnapshot = await getDocs(q);
+        const result = [];
+        querySnapshot.forEach((doc) => {
+          result.push(doc.data().name);
+        });
         dispatch(
           SET_ACTIVE_USER({
             email: user.email,
             userID: user.uid,
-            userName: user.userName,
+            userName: result[0],
           })
         );
-        toast.success("เข้าสู่ระบบสำเร็จ");
+        setLoading(false);
         nav("/home");
+        toast.success("เข้าสู่ระบบสำเร็จ");
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error.message);
         switch (error.code) {
           case "auth/wrong-password":
@@ -94,6 +109,9 @@ const Login = () => {
           <button className="login-link-btn" onClick={toRegis}>
             Don't have account? Click Here.
           </button>
+          <div className="loader">
+            {loading ? <TailSpin width="100" height="100" color="black" /> : ""}
+          </div>
         </div>
       </div>
     </>

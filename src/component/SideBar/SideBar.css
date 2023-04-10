@@ -42,9 +42,8 @@ body {
 .sidebar {
   z-index: 10;
   position: fixed;
-  top: 20px;
-  left: 20px;
-  bottom: 20px;
+  top: 60px;
+  bottom: 0px;
   border-radius: 10px;
   box-sizing: initial;
   border-left: 5px solid rgb(235, 109, 93);

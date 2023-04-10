@@ -2,16 +2,11 @@ import { Link } from "react-router-dom";
 import * as icons from "react-icons/bi";
 import "./SideBar.css";
 import { useState } from "react";
-import { Store } from "redux";
-import authSlice, { REMOVE_ACTIVE_USER } from "../../redux/Slice/authSlice";
+import { REMOVE_ACTIVE_USER } from "../../redux/Slice/authSlice";
 import { useDispatch } from "react-redux";
 import { AdminAccess } from "../AdminAccess";
 
 export const SideBar = () => {
-  // const getUser =()=>{
-
-  // }
-  const [user, setUser] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 

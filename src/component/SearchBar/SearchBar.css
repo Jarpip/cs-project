@@ -10,6 +10,7 @@
 }
 
 .input-wrapper input[type="text"] {
+  border: none;
   background-color: transparent;
   height: 100%;
   font-size: 1.25rem;

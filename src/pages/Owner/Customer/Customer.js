@@ -1,11 +1,7 @@
 import DataTable from "react-data-table-component";
 import { SearchBar } from "../../../component/SearchBar/SearchBar";
 import { useNavigate } from "react-router-dom";
-import { QuerySnapshot } from "firebase/firestore";
-import { useState } from "react";
-import { db } from "../../../firebase";
-import { getDocs } from "firebase/firestore";
-import { collection } from "firebase/firestore";
+import "./Customer.css";
 
 const columns = [
   {
@@ -46,7 +42,12 @@ const data = [
     model: "Honda Civic Hatchback",
     color: "red",
     plate: "79DVG",
-    edit: <><button>EDIT</button><button>DELETE</button></>,
+    edit: (
+      <>
+        <button>EDIT</button>
+        <button>DELETE</button>
+      </>
+    ),
   },
 ];
 const Customer = () => {
@@ -74,7 +75,7 @@ const Customer = () => {
 
   return (
     <>
-      <div className="search-car">
+      <div className="search-customer">
         <div className="search-container">
           <SearchBar />
           <br></br>

@@ -7,7 +7,6 @@ import { auth, db } from "../../../firebase";
 import { injectStyle } from "react-toastify/dist/inject-style";
 import { addDoc, collection } from "firebase/firestore";
 import { TailSpin } from "react-loader-spinner";
-import { FiEye } from "react-icons/fi";
 
 const Register = () => {
   injectStyle();
@@ -17,13 +16,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [cPassword, setcPassword] = useState("");
   const [contact, setContact] = useState("");
-  const [uid, setUid] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // const [passwordShown, setPasswordShown] = useState(false);
-  // const togglePassword = () => {
-  //   setPasswordShown(!passwordShown);
-  // };
 
   const nav = useNavigate();
   const toLogin = () => {
@@ -39,7 +32,7 @@ const Register = () => {
       createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
           const user = userCredential.user;
-          const docRef = await addDoc(collection(db, "users"), {
+          await addDoc(collection(db, "users"), {
             name: name,
             contact: contact,
             email: email,
