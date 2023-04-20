@@ -45,6 +45,16 @@ const Register = () => {
         .catch((error) => {
           console.log(error.message);
           setLoading(false);
+          switch (error.code) {
+            case "auth/weak-password":
+              toast.error(
+                "รหัสผ่านสั้นเกินไป อย่างน้อยต้องมีความยาว 6 ตัวอักษร!"
+              );
+              break;
+            default:
+              toast.error("เกิดข้อผิดพลาด!");
+              break;
+          }
         });
     }
   };
@@ -60,7 +70,6 @@ const Register = () => {
             autoComplete="off"
           >
             <div className="register-input-field">
-              <label htmlFor="name">Name</label>
               <input
                 required
                 value={name}
@@ -72,7 +81,6 @@ const Register = () => {
               />
             </div>
             <div className="register-input-field">
-              <label htmlFor="email">Email</label>
               <input
                 required
                 value={email}
@@ -84,7 +92,6 @@ const Register = () => {
               />
             </div>
             <div className="register-input-field">
-              <label htmlFor="password">Password</label>
               <input
                 required
                 value={password}
@@ -96,7 +103,6 @@ const Register = () => {
               />
             </div>
             <div className="register-input-field">
-              <label htmlFor="cPassword">Confirm Password</label>
               <input
                 required
                 value={cPassword}
@@ -108,7 +114,6 @@ const Register = () => {
               />
             </div>
             <div className="register-input-field">
-              <label htmlFor="contact">Contact</label>
               <input
                 required
                 value={contact}
@@ -119,10 +124,10 @@ const Register = () => {
                 name="contact"
               />
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">สมัครสมาชิก</button>
           </form>
           <button className="register-link-btn" onClick={toLogin}>
-            Already have an account? Click Here.
+            มีบัญชีผู้ใช้แล้วใช่ไหม? เข้าสู่ระบบเลย.
           </button>
           <div className="loader">
             {loading ? <TailSpin width="100" height="100" color="black" /> : ""}

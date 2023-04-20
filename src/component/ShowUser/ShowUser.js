@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { auth } from "../../firebase";
 import "./ShowUser.css";
 import { useSelector } from "react-redux";
 import { selectEmail, selectUserName } from "../../redux/Slice/authSlice";
@@ -8,11 +7,6 @@ export const ShowUser = () => {
   const email = useSelector(selectEmail);
   const username = useSelector(selectUserName);
   const [user, setUser] = useState("");
-
-  // auth.onAuthStateChanged((user) => {
-  //   setEmail(user.email);
-  //   setUsername(user.name);
-  // });
 
   const checkUser = () => {
     if (email === "admin@first.auto") {
@@ -24,6 +18,7 @@ export const ShowUser = () => {
 
   useEffect(() => {
     checkUser();
+    //eslint-disable-next-line
   }, []);
 
   return (

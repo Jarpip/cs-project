@@ -9,7 +9,7 @@ import { persistStore } from "redux-persist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-let persistor = persistStore(store);
+const persistor = persistStore(store);
 
 root.render(
   <Provider store={store}>

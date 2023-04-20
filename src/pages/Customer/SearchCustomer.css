@@ -1,3 +1,13 @@
+.search-customer {
+  background-color: rgb(238, 227, 227);
+  width: 100vw;
+  height: 100vh;
+}
+
+.result-container {
+  background-color: white;
+}
+
 .input-wrapper {
   background-color: white;
   width: 500px;
@@ -24,4 +34,8 @@
 
 #search-icon {
   color: rgb(0, 0, 0);
+}
+
+.btn2 {
+  margin-left: 10px;
 }

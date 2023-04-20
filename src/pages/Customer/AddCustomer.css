@@ -1,0 +1,71 @@
+.add-customer-main {
+  background-color: rgb(238, 227, 227);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-customer-input-wrapper {
+  background-color: white;
+  margin-top: 20px;
+  display: flex;
+  min-width: 30vw;
+  min-height: 200px;
+  border-style: solid;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-customer-input {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.add-customer-input label {
+  margin-left: 10px;
+}
+
+.add-customer-input input {
+  padding: 5px;
+  margin-left: 10px;
+  width: 200px;
+}
+
+.back {
+  width: auto;
+  left: 0;
+}
+
+.back-btn {
+  justify-content: left;
+}
+
+.final-row-input {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.final-row-input label {
+  margin-left: 10px;
+}
+
+.final-row-input input {
+  padding: 5px;
+  margin-left: 10px;
+  width: 200px;
+}

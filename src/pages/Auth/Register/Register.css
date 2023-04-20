@@ -53,6 +53,7 @@
   border: none;
   cursor: pointer;
   background: none;
+  font-size: 15px;
   color: blue;
   text-decoration: underline;
 }

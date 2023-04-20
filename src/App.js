@@ -1,16 +1,16 @@
 import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Customers from "./pages/Owner/Customer/Customer";
-import SearchCar from "./pages/SearchCar/SearchCar";
+import SearchCustomer from "./pages/Customer/SearchCustomer";
+import AddCustomer from "./pages/Customer/AddCustomer";
+import SearchCar from "./pages/Car/SearchCar";
+import AddCar from "./pages/Car/AddCar";
 import Login from "./pages/Auth/Login/Login";
 import Register from "./pages/Auth/Register/Register";
 import SidebarLayout from "./component/SideBar/SideBarLayout";
-import Cars from "./pages/Owner/Car/Cars";
 import { ToastContainer } from "react-toastify";
-import Queue from "./pages/Owner/Queue/Queue";
-import AddCustomer from "./pages/Owner/Customer/AddCustomer";
+import ProtectedRoute from "./authGuard/ProtectedRoute";
+import UnProtectedRoute from "./authGuard/UnProtectedRoute";
 
 const App = () => {
   return (
@@ -18,17 +18,20 @@ const App = () => {
       <Router>
         <ToastContainer />
         <Routes>
-          <Route element={<SidebarLayout />}>
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/car" element={<Cars />} />
-            <Route path="/customer" element={<Customers />} />
-            <Route path="/searchCar" element={<SearchCar />} />
-            <Route path="/queue" element={<Queue />} />
-            <Route path="/addCustomer" element={<AddCustomer />} />
+          <Route element={<UnProtectedRoute />}>
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Route>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route element={<ProtectedRoute />}>
+            <Route element={<SidebarLayout />}>
+              <Route path="/home" element={<HomePage />} exact />
+              <Route path="/searchCustomer" element={<SearchCustomer />} />
+              <Route path="/addCustomer/:mode" element={<AddCustomer />} />
+              <Route path="/addCar" element={<AddCar />} />
+              <Route path="/searchCar" element={<SearchCar />} />
+            </Route>
+          </Route>
         </Routes>
       </Router>
     </>

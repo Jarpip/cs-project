@@ -37,6 +37,7 @@
 .car-input {
   margin: 30px;
   display: flex;
+  justify-content: space-around;
 }
 
 .car-input label {
@@ -46,6 +47,7 @@
 .car-input input {
   margin-left: 10px;
   width: 200px;
+  padding: 5px;
 }
 
 .save-btn {

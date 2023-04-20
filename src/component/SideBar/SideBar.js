@@ -5,6 +5,7 @@ import { useState } from "react";
 import { REMOVE_ACTIVE_USER } from "../../redux/Slice/authSlice";
 import { useDispatch } from "react-redux";
 import { AdminAccess } from "../AdminAccess";
+import { REMOVE_CUSTOMER_DATA } from "../../redux/Slice/customerSlice";
 
 export const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ export const SideBar = () => {
   const dispatch = useDispatch();
 
   const logOut = () => {
-    dispatch(REMOVE_ACTIVE_USER());
+    dispatch(REMOVE_ACTIVE_USER(), REMOVE_CUSTOMER_DATA());
   };
 
   return (
@@ -32,7 +33,7 @@ export const SideBar = () => {
       <ul className="nav-links">
         <AdminAccess>
           <li className="active">
-            <Link to="/car">
+            <Link to="/addCar">
               <span
                 className="icon"
                 style={{ paddingRight: isOpen ? "0px" : "25px" }}
@@ -43,14 +44,14 @@ export const SideBar = () => {
             </Link>
           </li>
           <li className="active">
-            <Link to="/customer">
+            <Link to="/searchCustomer">
               <span
                 className="icon"
                 style={{ paddingRight: isOpen ? "0px" : "25px" }}
               >
                 <icons.BiUserPlus />
               </span>
-              <span className="title">จัดการลูกค้า</span>
+              <span className="title">จัดการประวัติลูกค้า</span>
             </Link>
           </li>
         </AdminAccess>

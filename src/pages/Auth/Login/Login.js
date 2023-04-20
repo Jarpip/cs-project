@@ -79,7 +79,6 @@ const Login = () => {
             autoComplete="off"
           >
             <div className="login-input-field">
-              <label htmlFor="email">Email</label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -91,7 +90,6 @@ const Login = () => {
               />
             </div>
             <div className="login-input-field">
-              <label htmlFor="password">Password</label>
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -103,11 +101,11 @@ const Login = () => {
               />
             </div>
             <button className="login-btn" type="submit">
-              Log In
+              เข้าสู่ระบบ
             </button>
           </form>
           <button className="login-link-btn" onClick={toRegis}>
-            Don't have account? Click Here.
+            ยังไม่มีบัญชีผู้ใช้ใช่ไหม? สมัครเลย.
           </button>
           <div className="loader">
             {loading ? <TailSpin width="100" height="100" color="black" /> : ""}
